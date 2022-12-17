@@ -1,0 +1,314 @@
+﻿<Window x:Class="WPF_giera1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_giera1"
+        mc:Ignorable="d"
+        Title="DH" Height="550" Width="1200"
+        Background = "{StaticResource BackgroundColor}"
+        Foreground="{StaticResource TextColor}"
+        WindowStartupLocation="CenterScreen"
+        Loaded="WindowLoaded"
+        >
+    <Grid Margin="0,10,0,-16" RenderTransformOrigin="0.625,0.507">
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Map_Grid"
+                   Text="Map_Grid"
+                   FontSize="40"
+                   Margin="5"
+                   >
+
+        </TextBlock>
+        <Border x:Name= "GridBorder"
+                Grid.Row="1"
+                BorderBrush="{StaticResource GridBackgroundColor}"
+                BorderThickness="1.5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="50 0 0 0"
+                >
+            <UniformGrid x:Name="TerrainCanvas"
+                                 Width="400"
+                                 Height="400"
+                                 Background="{StaticResource GridBackgroundColor}"
+                         >
+            </UniformGrid>
+
+        </Border>
+        <UniformGrid
+                x:Name="UnitCanvas"
+                Grid.Row="1"
+                Width="400"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Height="400" Margin="50 0 0 0"
+            >
+        </UniformGrid>
+
+        <UniformGrid
+                x:Name="Range_canvas"
+                Grid.Row="1"
+                Width="400"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Height="400" Margin="50 0 0 0"
+            >
+        </UniformGrid>
+
+        <UniformGrid
+                x:Name="Buttons_canvas"
+                Grid.Row="1"
+                Width="400"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Height="400" Margin="50 0 0 0"
+            >
+        </UniformGrid>
+        <Canvas
+            x:Name="UnitStats"
+            Background="{StaticResource GridBackgroundColor}"
+            Width="281"
+            Height="403"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Margin="479,0,0,75"
+            Opacity="0" Grid.RowSpan="2"
+            >
+            <Rectangle
+                    x:Name="Mana_Label"
+                    Width="206"
+                    Height="25"
+                    Fill="#082c4a" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="378"/>
+            <Rectangle
+                x:Name="Mana"
+                Width="150"
+                Height="25"
+                Fill="#42a4f5" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="378"/>
+
+            <TextBlock
+                x:Name="Mana_text"
+                Text="0/0"
+                FontSize="15" HorizontalAlignment="Center" Canvas.Left="10" VerticalAlignment="Top" Canvas.Top="380"/>
+            <Rectangle
+                    x:Name="HP_Label"
+                    Width="206"
+                    Height="25"
+                    Fill="#54100a" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="353"/>
+            <Rectangle
+                x:Name="HP"
+                Width="150"
+                Height="25"
+                Fill="#e31d0b" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="353"/>
+            <TextBlock
+                x:Name="HP_text"
+                Text="0/01"
+                FontSize="15" HorizontalAlignment="Center" Canvas.Left="6" VerticalAlignment="Top" Canvas.Top="355"/>
+            <Image
+                x:Name = "ChosenUnit_Portrait"
+                Width="200"
+                Height="200" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="1"
+                />
+            <Rectangle
+                    x:Name="Stamina_Label"
+                    Width="206"
+                    Height="25"
+                    Fill="#7a600b" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="328"/>
+            <Rectangle
+                x:Name="Stamina"
+                Width="150"
+                Height="25"
+                Fill="#ffc403" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="328"/>
+            <TextBlock
+                x:Name="Stamina_text"
+                Text="0/01"
+                FontSize="15" HorizontalAlignment="Center" Canvas.Left="6" VerticalAlignment="Top" Canvas.Top="330"/>
+            <Button
+                x:Name="Equipment_Button"
+                Content="Inventory"
+                Background="Azure" Canvas.Left="206" Canvas.Top="328"
+                Height="75"
+                Width="75" HorizontalAlignment="Left" VerticalAlignment="Center"
+                />
+            <TextBlock
+                Width="137"
+                Height="25"
+                x:Name="text_armour"
+                Background="#0c6315" HorizontalAlignment="Center" Canvas.Top="228" VerticalAlignment="Center"
+                Text="Armour:  " Canvas.Left="144"
+                />
+            <TextBlock
+                Width="144"
+                Height="25"
+                x:Name="text_Dodge"
+                Background="#0c6315" Canvas.Top="278" HorizontalAlignment="Center" VerticalAlignment="Top"
+                Text="Dodge chance:  %"
+                />
+            <Button
+                x:Name="Skill_1"
+                Content="Skill_1"
+                Background="Azure" Canvas.Left="207" Canvas.Top="1"
+                Height="50"
+                Width="74"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Click="Skill_1_Click"
+                />
+            <Button
+                x:Name="Skill_2"
+                Content="Skill_2"
+                Background="Azure" Canvas.Left="207" Canvas.Top="51"
+                Height="50"
+                Width="74"
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Click="Skill_2_Click"
+                />
+            <Button
+                x:Name="Skill_3"
+                Content="Skill_3"
+                Background="Azure" Canvas.Left="207" Canvas.Top="101"
+                Height="50"
+                Width="74"
+                Click="Skill_3_Click"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                />
+            <Button
+                x:Name="Skill_4"
+                Content="Skill_4"
+                Background="Azure" Canvas.Left="207" Canvas.Top="151"
+                Height="50"
+                Width="74"
+                Click="Skill_4_Click"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                />
+            <TextBlock
+                Width="144"
+                Height="25"
+                x:Name="text_attack_range"
+                Background="#0c6315" Canvas.Top="253"
+                Text="Attack Range:  "
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                />
+            <TextBlock
+                Width="137"
+                Height="25"
+                x:Name="text_attack_damage"
+                Background="#0c6315" Canvas.Top="253"
+                Text="Attack Damage:  "
+                HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="144"
+                />
+            <TextBlock
+                Width="144"
+                Height="25"
+                x:Name="text_sight"
+                Background="#0c6315" Canvas.Top="228"
+                Text="Sigth Range:  "
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                />
+            <TextBlock
+                Width="137"
+                Height="25"
+                x:Name="text_accuracy"
+                Background="#0c6315" Canvas.Top="278"
+                Text="Accuracy:  %"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="144"
+                />
+            <TextBlock
+                Width="144"
+                Height="25"
+                x:Name="text_speed"
+                Background="#0c6315" Canvas.Top="303"
+                Text="Speed:  "
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                />
+            <TextBlock
+                Width="207"
+                Height="25"
+                x:Name="text_type"
+                Background="#0c6315" Canvas.Top="203"
+                Text="Unit Type:  "
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                />
+            <Button
+                x:Name="BasicAttack"
+                Content="Skill_4"
+                Background="Azure" Canvas.Left="207" Canvas.Top="201"
+                Height="27"
+                Width="74"
+                Click="BasicAttack_Click"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                />
+            <TextBlock
+                Width="137"
+                Height="25"
+                x:Name="text_megicpower"
+                Background="#0c6315" Canvas.Top="303"
+                Text="Power:  "
+                HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="144"
+                />
+
+
+        </Canvas>
+
+        <StackPanel 
+                    Name ="ControlButtons"
+                    HorizontalAlignment="Left"
+                    Margin="974,63,0,178"
+                    Width="100" Grid.RowSpan="2"
+            >
+            <Button Name ="btn1"
+                    
+                    Height="180"
+                    Width="100"
+                    Margin = "0,0"
+                    Click="Btn_Click"
+                    Content="MoveUnit"
+                    />
+            <Button x:Name ="btn2"
+                    IsEnabled="True"
+                    Height="180"
+                    Click="Add_Click"
+                    Content="AddUnit"
+                    Margin="0,30"
+                    />
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Right"
+                    Grid.Row="2"
+                    Width=" 100">
+            <Button Name ="Container_Y"
+                    Background="Azure"
+                    Content="Container_Y "/>
+            <Button Name ="Container_X"
+                    Content="Container_X "
+                    Background="Azure"
+                    />
+            <Button Name ="Container_Empty"
+                    Content="Container_Empty "
+                    Background="Azure"
+                    />
+            <Button Name ="Move_active"
+                    Content="Move_active"
+                    Background="Azure"
+                    />
+            <Button Name ="PrintmyNeeds"
+                    Content="PrintWhatINeed"
+                    Background="Azure"
+                    Click="PrintWhatINeed"
+                    />
+
+        </StackPanel>
+
+
+
+
+
+    </Grid>
+
+
+
+</Window>
